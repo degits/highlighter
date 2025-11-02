@@ -11,6 +11,7 @@ async function store(selection, container, url, href, color, textColor) {
 
     if (!highlights[url]) highlights[url] = [];
 
+    //🚨🚨🚨🚨 - Mutuable updation
     const count = highlights[url].push({
         version: STORE_FORMAT_VERSION,
         string: selection.toString(),
@@ -25,6 +26,7 @@ async function store(selection, container, url, href, color, textColor) {
         uuid: crypto.randomUUID(),
         createdAt: Date.now(),
     });
+    //🚨🚨🚨🚨 - This is a immutable updation
     chrome.storage.local.set({ highlights });
 
     // Return the index of the new highlight:
